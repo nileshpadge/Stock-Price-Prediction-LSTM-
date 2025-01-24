@@ -18,7 +18,8 @@ To run this project, the following Python libraries are required:
   * Keras: For building the LSTM model.
   * TensorFlow: Backend for Keras.
 
-* Steps:
+ **Steps:**
+ 
 **Data Preprocessing**:
 
   * Dataset Loading: Read the dataset and filter it based on the stock symbol 
@@ -34,22 +35,27 @@ To run this project, the following Python libraries are required:
     relationships between numerical features like OPEN, CLOSE, HIGH, LOW, 
     PRICE_CHANGE etc.
   * Feature Selection: Select relevant features for model input.
+    
 **Data Scaling**:
 
   * MinMaxScaler: Apply MinMax scaling to scale the features between 0 and 1 
     This is crucial for LSTM models to handle numerical data properly.
   * Train-Test Split: Split the data into training and testing sets, using 
-    the scaled data.
+    the scaled data
+    
 **Sequence Creation**:
 
   * Window-based Input: Create time-sequenced data (X_train, y_train, 
     X_test, y_test) based on a window_size (60 in this case). This helps the 
     LSTM model to capture temporal dependencies.
+    
 **Model Construction**:
 
-  * LSTM Layers: Construct an LSTM model with two LSTM layers. The first LSTM 
-    layer is return_sequences=True to output sequences to the next layer. The 
-    second LSTM layer is return_sequences=False as it's the last LSTM layer.
+  * LSTM Layers: Construct an LSTM model with two LSTM layers.
+  * The first LSTM layer is return_sequences=True to output sequences to 
+    the next layer. 
+    The second LSTM layer is return_sequences=False as it's the last LSTM 
+     layer.
   * Dropout Layer: Add a Dropout layer with a rate of 0.4 to reduce 
      overfitting.
   * Dense Layer: The output layer is a Dense layer with 1 unit to predict a       single value (price).
@@ -80,19 +86,19 @@ To run this project, the following Python libraries are required:
     
 **Future Price Prediction:**
 
-**Sliding Window:** Use the last window_size days of data as input to 
+* Sliding Window: Use the last window_size days of data as input to 
     predict the future stock prices for the next 30 days.
-**Future Predictions:** For each day, the model predicts the next price, and 
+* Future Predictions: For each day, the model predicts the next price, and 
     the input is updated with the predicted price for the next iteration.
-**Generate Future Dates:** Generate future dates based on the last date in 
+* Generate Future Dates: Generate future dates based on the last date in 
     the test data and combine the past and predicted prices.
     
 **Visualization:**
 
-  **Combining Past and Future Data:** Combine the actual past prices with 
+  * Combining Past and Future Data: Combine the actual past prices with 
      the predicted future prices.
     
-   **Plotting:** Optionally visualize the combined data on a plot to see 
+   * Plotting: Optionally visualize the combined data on a plot to see 
       the trend of predicted prices.
   
 
